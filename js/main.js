@@ -1,78 +1,69 @@
-let elForm = document.querySelector(".form");
-let elInput = document.querySelector(".form__input");
-let elList = document.querySelector(".pokemon__list");
+const elForm = document.querySelector(".form");
+const elInput = document.querySelector(".form__input");
+const elList = document.querySelector(".pokemon__list");
+const pokemonFragment = document.createDocumentFragment();
 
-let renderPokemon = function(array) {
+const renderPokemon = function(array, node, searchValue) {
     elList.innerHTML = "";
     array.forEach(item => {
-        let liElement = document.createElement("li");
-        let imgElement = document.createElement("img");
-        let nameElement = document.createElement("p");
-        // let weightElement = document.createElement("p");
-        // let heightElement = document.createElement("p");
-        // let eggElement = document.createElement("p");
-        // let spawnElement = document.createElement("p");
-        let moreInfo = document.createElement("button");
-
+        // Creating elements
+        const liElement = document.createElement("li");
+        const imgElement = document.createElement("img");
+        const nameElement = document.createElement("p");
+        const moreInfo = document.createElement("button");
         
         // set attribute
         imgElement.setAttribute("src", item.img);
         imgElement.setAttribute("alt", item.name);
         imgElement.classList.add("pokemon-img");
         
-        // textContentga, classlist qoshdik
+        // textContent and adding classes
         liElement.classList.add("pokemon__items");
-        // weightElement.textContent = `Weight: ${item.weight}`;
-        // weightElement.classList.add("item__weight");
-        // heightElement.textContent = `Height: ${item.height}`;
-        // heightElement.classList.add("item__height");
-        // eggElement.textContent = `Egg: ${item.egg}`;
-        // eggElement.classList.add("item__egg");
-        // spawnElement.textContent = `Spawn time: ${item.spawn_time}`;
-        // spawnElement.classList.add("item__spawn");
-        nameElement.textContent = item.name;
         nameElement.classList.add("item__name");
         moreInfo.classList.add("btn", "btn-primary", "modal-btn");
         moreInfo.textContent = "More Info";
-
-
         moreInfo.dataset.id = item.id;
         moreInfo.setAttribute("data-bs-toggle", "modal");
         moreInfo.setAttribute("data-bs-target", "#exampleModal");
+        
+        // Making highligth
+        if(searchValue) {
+            const regEx = new RegExp(searchValue, 'gi');
+            const marked = item.name.replace(regEx, `<mark>$&</mark>`);
+        } else {
+            nameElement.innerHTML = item.name;
+        }
 
-        // LIga ichidegilarni qoshib chqamiz
-        // liElement.append(imgElement, nameElement, weightElement, heightElement);
-        // liElement.append(eggElement, spawnElement);
+        // Appending elements
         liElement.append(imgElement, nameElement, moreInfo);
-        elList.appendChild(liElement);
+        pokemonFragment.appendChild(liElement);
+        node.appendChild(pokemonFragment);
     });
 };
+renderPokemon(pokemons, elList, elInput);
 
-renderPokemon(pokemons);
-
-// Submit qldik
+// Submit event
 elForm.addEventListener("submit", function(evt) {
     evt.preventDefault();
 
-    let inputValue = elInput.value.trim().toLowerCase();
+    const inputValue = elInput.value.trim().toLowerCase();
 
-    let result = pokemons.filter(function(item) {
+    const result = pokemons.filter(function(item) {
         return item.name.toLowerCase() == inputValue;
     });
-
-    renderPokemon(result);
+    renderPokemon(result, elList);
 });
 
 
 // Inputnni eshitdik
 elInput.addEventListener("keyup", function() {
-    let searchInputValue = elInput.value.trim().toLowerCase();
+    const searchInputValue = elInput.value.trim().toLowerCase();
 
-    let filtered = pokemons.filter(function(item) {
-        let searchName = item.name.toLowerCase();
+    const filtered = pokemons.filter(function(item) {
+        const searchName = item.name.toLowerCase();
         return searchName.includes(searchInputValue);
     });
-    renderPokemon(filtered);
+    renderPokemon(filtered, elList);
 });
 
 // Modal olb keldik
@@ -101,4 +92,4 @@ elList.addEventListener("click", (evt) => {
 const sortedPokemonNames = pokemons.sort((a, b) => {
     return a.name.toLowerCase().charCodeAt(0) - b.name.toLowerCase().charCodeAt(0);
 });
-renderPokemon(sortedPokemonNames);
+renderPokemon(sortedPokemonNames, elList);

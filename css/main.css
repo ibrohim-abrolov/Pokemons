@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+img {
+    display: block;
+    height: auto;
+}
+
+
+input:focus {
+    outline: none;
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.form {
+    margin-bottom: 50px;
+    transform: translateX(30px);
+}
+
+.form__input {
+    margin-right: 7px;
+    padding: 7px 25px;
+    border: 2px solid yellow;
+    border-radius: 5px;
+}
+
+.form__btn {
+    padding: 7px 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: greenyellow;
+    border: 2px solid yellow;
+    border-radius: 5px;
+}
+
+
+.pokemon__img {
+    width: 20%;
+    height: 25%;
+    margin: 0 auto;
+}
+
+.pokemon__outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 70px auto 150px auto;
+}
+
+.pokemon__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 45px;
+    row-gap: 40px;
+    margin: 0;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.pokemon__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 320px;
+    width: 100%;
+    padding: 25px 0;
+    font-size: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 63px 66px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s ease;
+}
+
+.pokemon__items:hover {
+    transform: scale(1.1);
+}
+
+.pokemon-img {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: #fff;
+    border: 2px solid rgba(67, 91, 102, 0.637);
+    border-radius: 50%;
+}
+
+.item__name {
+    font-size: 23px;
+    line-height: 22px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.modal-content {
+    box-shadow: 0px 10px 63px 66px rgba(0, 0, 0, 0.1);
+    background-color: greenyellow;
+}
+
+.modal-header {
+    justify-content: flex-start;
+}
+
+.modal-title {
+    margin: 0 0 0 auto;
+    padding: 5px 9px 5px 9px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: #0a58ca;
+    border: 1px solid #0a58ca;
+    border-radius: 7px;
+}
+
+.btn-close {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.modal-items {
+    display: block;
+    padding: 5px 5px 2px 5px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #0a58ca;
+    border-bottom: 1px solid #0a58ca;
+}
+
+.modal-items:not(:last-child) {
+    margin-bottom: 7px;
+}

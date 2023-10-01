@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POKEMONS</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  
+  <main class="site-main">
+    <div class="container">
+      <div class="pokemon">
+        <div class="pokemon__outer">
+          <a class="pokemon__link" href="./index.html">
+            <img class="pokemon__img" src="./images/Pokemon.png"
+            alt="pokemon image">
+          </a>
+        </div>
+        <form class="form">
+          <input class="form__input" type="search" placeholder="Search.." name="user_search" required>
+          <button class="form__btn" type="submit">
+            Search
+          </button>
+        </form>
+        <div class="pokemon__inner">
+          <ul class="pokemon__list">
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Modal title
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <span class="modal-items height"></span>
+          <span class="modal-items weight"></span>
+          <span class="modal-items egg"></span>
+          <span class="modal-items spawn-time"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/pokemon.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

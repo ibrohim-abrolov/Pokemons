@@ -37,8 +37,8 @@ const renderPokemon = function(array, node, searchValue) {
         // Appending elements
         liElement.append(imgElement, nameElement, moreInfo);
         pokemonFragment.appendChild(liElement);
-        node.appendChild(pokemonFragment);
     });
+    node.appendChild(pokemonFragment);
 };
 renderPokemon(pokemons, elList, elInput);
 
